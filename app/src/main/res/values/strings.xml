@@ -4,4 +4,5 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_dynamic_native_video">DaggerNativeVideo</string>
+    <string name="open_native_video">Native video</string>
 </resources>
