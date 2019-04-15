@@ -22,7 +22,12 @@ android {
     }
 
 
-    dynamicFeatures = [":dynamic_native_video"]
+    dynamicFeatures = [":dynamic_native_video", ":dynamic_ott"]
+
+
+
+
+    
 
 
 }
@@ -41,7 +46,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
 
-// Architecture components
+    // Architecture components
     implementation deps.lifecycle.runtime
     implementation deps.lifecycle.extensions
     annotationProcessor deps.lifecycle.compiler
