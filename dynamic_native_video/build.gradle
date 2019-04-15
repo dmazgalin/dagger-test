@@ -21,9 +21,10 @@ dependencies {
     implementation project(':app')
     implementation project(':core')
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation deps.support.app_compat
+    implementation deps.support.core_ktx
+
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
