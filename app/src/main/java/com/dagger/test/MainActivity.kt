@@ -7,18 +7,23 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.dagger.core.dagger.DaggerCoreComponent
 import com.dagger.core.picasso.PicassoLoader
 import com.dagger.test.adapter.CmsAdapter
+import com.dagger.test.dagger.DaggerAppComponent
 import com.dagger.test.model.CmsItem
 import com.dagger.test.viewmodel.MainViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
+    @Inject
+    lateinit var picassoLoader: PicassoLoader
+
     private lateinit var cmsAdapter: CmsAdapter
-    //TODO: inject picasso loader
-    private lateinit var picassoLoader: PicassoLoader
+
     private lateinit var model : MainViewModel
     private lateinit var observer : Observer<List<CmsItem>>
 
@@ -51,10 +56,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        DaggerAppComponent.builder().coreComponent(DaggerCoreComponent.builder().build()).build().inject(this)
+
         cmsRecycler.visibility = View.GONE
         nativeVideo.visibility = View.GONE
 
-        picassoLoader = PicassoLoader()
         cmsAdapter = CmsAdapter(picassoLoader)
         observer = Observer { items -> cmsAdapter.setCmsItems(items) }
         model = ViewModelProviders.of(this).get(MainViewModel::class.java)
