@@ -8,6 +8,7 @@ import com.squareup.picasso.Picasso;
 
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.OkHttpClient;
 
 @Module
 public class PicassoModule {
@@ -22,5 +23,10 @@ public class PicassoModule {
     @Provides
     Cache providesMemoryCache(Context context) {
         return new LruCache(context);
+    }
+
+    @Provides
+    OkHttp3Downloader providesHttpDownloader(OkHttpClient client) {
+        return new OkHttp3Downloader(client);
     }
 }

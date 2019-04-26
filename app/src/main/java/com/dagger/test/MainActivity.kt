@@ -7,8 +7,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dagger.core.dagger.DaggerCoreComponent
 import com.dagger.core.picasso.PicassoLoader
+import com.dagger.test.DTApplication.Companion.coreComponent
 import com.dagger.test.adapter.CmsAdapter
 import com.dagger.test.dagger.DaggerAppComponent
 import com.dagger.test.model.CmsItem
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        DaggerAppComponent.builder().coreComponent(DaggerCoreComponent.builder().build()).build().inject(this)
+        DaggerAppComponent.builder().coreComponent(coreComponent(this)).build().inject(this)
 
         cmsRecycler.visibility = View.GONE
         nativeVideo.visibility = View.GONE

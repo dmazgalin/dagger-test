@@ -1,13 +1,14 @@
 package com.dagger.corehttp.dagger;
 
 import android.content.Context;
-import com.squareup.picasso.OkHttp3Downloader;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 @Module
 public class CoreHttpModule {
@@ -16,15 +17,12 @@ public class CoreHttpModule {
     private static final String CORE_HTTP = "core-http";
 
     @Provides
-    OkHttp3Downloader providesHttpDownloader(OkHttpClient client) {
-        return new OkHttp3Downloader(client);
-    }
-
-    @Provides
-    OkHttpClient providesOkHttpClient(Cache cache) {
+    OkHttpClient providesOkHttpClient(Cache cache, HttpLoggingInterceptor httpLoggingInterceptor) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.cache(cache);
-        //builder.addNetworkInterceptor(null);
+        builder.connectTimeout(30, TimeUnit.SECONDS);
+        builder.readTimeout(30, TimeUnit.SECONDS);
+        builder.addInterceptor(httpLoggingInterceptor);
         return builder.build();
     }
 
@@ -36,5 +34,12 @@ public class CoreHttpModule {
     @Provides
     File providesFile(Context context) {
         return new File(context.getCacheDir(), CORE_HTTP);
+    }
+
+    @Provides
+    HttpLoggingInterceptor providesHttpLoggingInterceptor() {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        return interceptor;
     }
 }

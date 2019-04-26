@@ -26,7 +26,8 @@ versions.mockito_all = "1.10.19"
 versions.mockito_android = "2.25.0"
 versions.mockwebserver = "3.8.1"
 versions.navigation = "2.1.0-alpha01"
-versions.okhttp_logging_interceptor = "3.9.0"
+versions.okhttp_logging_interceptor = "3.14.1"
+versions.okhttp = "3.14.1"
 versions.paging = "2.1.0-rc01"
 versions.retrofit = "2.3.0"
 versions.robolectric = "4.2"
@@ -37,6 +38,7 @@ versions.support = "1.1.0-alpha02"
 versions.timber = "4.5.1"
 versions.work = "2.0.0-rc01"
 versions.picasso = "2.71828"
+versions.okhttp_downloader = "1.1.0"
 
 def deps = [:]
 
@@ -79,6 +81,7 @@ retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
 retrofit.mock = "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
 deps.retrofit = retrofit
+deps.okhttp = "com.squareup.okhttp3:okhttp:$versions.okhttp"
 deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_logging_interceptor}"
 
 def dagger = [:]

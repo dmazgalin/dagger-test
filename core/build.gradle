@@ -24,12 +24,18 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(':core_http')
+    implementation project(':core_context')
 
     implementation deps.support.app_compat
     implementation deps.support.core_ktx
@@ -38,6 +44,7 @@ dependencies {
     kapt deps.dagger.compiler
 
     implementation deps.picasso
+    implementation deps.okhttp_logging_interceptor
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
