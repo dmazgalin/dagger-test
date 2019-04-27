@@ -1,19 +1,20 @@
 package com.dagger.corehttp.dagger;
 
 import android.content.Context;
+
+import java.io.File;
+import java.util.concurrent.TimeUnit;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
-import java.io.File;
-import java.util.concurrent.TimeUnit;
-
 @Module
 public class CoreHttpModule {
 
-    private static final long HTTP_CACHE_SIZE = 1000;
+    private static final long HTTP_CACHE_SIZE = 15 * 1024 * 1024;
     private static final String CORE_HTTP = "core-http";
 
     @Provides
