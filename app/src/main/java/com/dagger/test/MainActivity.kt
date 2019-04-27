@@ -7,7 +7,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import appComponent
 import com.dagger.core.picasso.PicassoLoader
 import com.dagger.test.adapter.CmsAdapter
 import com.dagger.test.model.CmsItem

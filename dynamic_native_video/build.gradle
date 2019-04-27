@@ -1,6 +1,7 @@
 apply plugin: 'com.android.dynamic-feature'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -25,8 +26,18 @@ dependencies {
     implementation project(':app')
     implementation project(':core')
 
+    //Base
     implementation deps.support.app_compat
     implementation deps.support.core_ktx
+
+    //Architecture components
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    annotationProcessor deps.lifecycle.compiler
+
+    //Dagger
+    implementation deps.dagger.runtime
+    kapt deps.dagger.compiler
 
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
