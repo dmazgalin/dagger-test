@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class RxModule {
+class CoreRxModule {
     @Provides
     fun providesSchedulerConfiguration() : SchedulerConfiguration = SchedulerConfigurationImpl
 }
