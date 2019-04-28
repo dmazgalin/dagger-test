@@ -12,6 +12,8 @@ import com.dagger.dynamic.nativevideo.R;
 import com.dagger.dynamic.nativevideo.model.NativeVideoItem;
 import com.dagger.dynamic.nativevideo.viewholder.NativeVideoViewHolder;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,5 +48,11 @@ public class NativeVideoAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void setNativeVideoItems(@NotNull List<NativeVideoItem> items) {
+        this.items.clear();
+        this.items.addAll(items);
+        notifyDataSetChanged();
     }
 }

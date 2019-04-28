@@ -8,5 +8,9 @@
         dist:title="@string/title_dynamic_native_video">
         <dist:fusing dist:include="true" />
     </dist:module>
+
+    <application>
+        <activity android:name=".NativeVideoActivity" />
+    </application>
 </manifest>
 
