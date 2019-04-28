@@ -1,1 +1,1 @@
-include ':app', ':dynamic_native_video', ':core', ':dynamic_ott', ':core_http', ':core_context'
+include ':app', ':dynamic_native_video', ':core', ':dynamic_ott', ':core_http', ':core_context', ':core_rx'

@@ -25,15 +25,24 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':app')
     implementation project(':core')
+    implementation project(':core_rx')
 
     //Base
     implementation deps.support.app_compat
     implementation deps.support.core_ktx
+    implementation deps.timber
 
     //Architecture components
     implementation deps.lifecycle.runtime
     implementation deps.lifecycle.extensions
     annotationProcessor deps.lifecycle.compiler
+
+    //RX
+    implementation deps.rxjava2
+    implementation deps.rx_android
+
+    //Retrofit
+    implementation deps.retrofit.runtime
 
     //Dagger
     implementation deps.dagger.runtime

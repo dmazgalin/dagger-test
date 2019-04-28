@@ -1,33 +1,51 @@
 package com.dagger.dynamic.nativevideo.viewmodel;
 
-import android.app.Application;
-
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
+import com.dagger.corerx.SchedulerConfiguration;
 import com.dagger.dynamic.nativevideo.cache.NativeVideoCache;
-import com.dagger.dynamic.nativevideo.model.NativeVideoItem;
+import com.dagger.dynamic.nativevideo.model.NativeVideoData;
 
 import java.util.List;
 
-public class NativeVideoViewModel extends AndroidViewModel {
+import io.reactivex.disposables.CompositeDisposable;
+import timber.log.Timber;
 
-    //TODO: inject cache
-    NativeVideoCache cache;
+public class NativeVideoViewModel extends ViewModel {
 
-    MutableLiveData<List<NativeVideoItem>> nativeVideoItemMutableLiveData;
+    private final SchedulerConfiguration scheduler;
+    private NativeVideoCache cache;
 
-    public NativeVideoViewModel(@NonNull Application application) {
-        super(application);
+    MutableLiveData<List<NativeVideoData>> nativeVideoItemMutableLiveData;
+
+    CompositeDisposable disposable;
+
+    public NativeVideoViewModel(NativeVideoCache cache, SchedulerConfiguration scheduler) {
+        this.cache = cache;
+        this.scheduler = scheduler;
     }
 
-    public LiveData<List<NativeVideoItem>> getNativeVideoItems() {
+    public LiveData<List<NativeVideoData>> getNativeVideoItems() {
         if (nativeVideoItemMutableLiveData == null) {
             nativeVideoItemMutableLiveData = new MutableLiveData<>();
         }
 
         return nativeVideoItemMutableLiveData;
+    }
+
+    public void activityResumed() {
+        disposable.add(cache.getItems().subscribeOn(scheduler.getComputation()).observeOn(scheduler.getUi()).subscribe(nativeVideoData -> {
+            nativeVideoItemMutableLiveData.postValue(nativeVideoData);
+        }, throwable -> {
+            Timber.e(throwable, "activityResumed()");
+        }));
+    }
+
+    public void activityPaused() {
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
     }
 }

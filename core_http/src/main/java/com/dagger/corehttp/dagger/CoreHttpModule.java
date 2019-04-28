@@ -2,6 +2,9 @@ package com.dagger.corehttp.dagger;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +13,9 @@ import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class CoreHttpModule {
@@ -42,5 +48,17 @@ public class CoreHttpModule {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return interceptor;
+    }
+
+    @Provides
+    Retrofit providesRetrofit(Gson gson, OkHttpClient okHttpClient) {
+        return new Retrofit.Builder().baseUrl(" ").client(okHttpClient).addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson)).build();
+
+    }
+
+    @Provides
+    Gson providesGson() {
+        return new GsonBuilder().setLenient().create();
     }
 }

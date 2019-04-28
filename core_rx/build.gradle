@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
@@ -24,36 +24,22 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(":core_context")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation deps.support.app_compat
-    implementation deps.support.core_ktx
+    //RX
+    implementation deps.rxjava2
+    implementation deps.rx_android
 
     //Dagger
     implementation deps.dagger.runtime
     kapt deps.dagger.compiler
 
-    //OK http
-    implementation deps.okhttp
-    implementation deps.okhttp_logging_interceptor
-
-    //Retrofit
-    implementation deps.retrofit.runtime
-    implementation deps.retrofit.gson
-    implementation deps.retrofit.adapterrx
-
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

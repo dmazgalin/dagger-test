@@ -5,7 +5,7 @@ import com.dagger.dynamic.nativevideo.NativeVideoActivity;
 
 import dagger.Component;
 
-@Component(dependencies = CoreComponent.class)
+@Component(dependencies = CoreComponent.class, modules = NativeVideoModule.class)
 public interface NativeVideoComponent {
     void inject(NativeVideoActivity activity);
 }

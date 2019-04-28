@@ -80,6 +80,7 @@ def retrofit = [:]
 retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
 retrofit.mock = "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
+retrofit.adapterrx = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
 deps.retrofit = retrofit
 deps.okhttp = "com.squareup.okhttp3:okhttp:$versions.okhttp"
 deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_logging_interceptor}"
