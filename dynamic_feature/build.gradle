@@ -11,8 +11,6 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-
-
     }
 
     compileOptions {
@@ -23,14 +21,18 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation project(':app')
     implementation project(':core')
+    implementation project(':core_http')
     implementation project(':core_rx')
+    implementation project(':core_context')
 
     //Base
     implementation deps.support.app_compat
     implementation deps.support.core_ktx
     implementation deps.timber
+    implementation deps.support.annotations
 
     //Architecture components
     implementation deps.lifecycle.runtime
@@ -41,8 +43,13 @@ dependencies {
     implementation deps.rxjava2
     implementation deps.rx_android
 
+    //OK http
+    implementation deps.okhttp
+    implementation deps.okhttp_logging_interceptor
+
     //Retrofit
     implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
 
     //Dagger
     implementation deps.dagger.runtime

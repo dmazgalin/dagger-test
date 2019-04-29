@@ -46,6 +46,7 @@ dependencies {
 
     implementation deps.picasso
     implementation deps.okhttp_logging_interceptor
+    implementation deps.retrofit.gson
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'

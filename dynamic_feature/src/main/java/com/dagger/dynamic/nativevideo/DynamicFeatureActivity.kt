@@ -14,7 +14,7 @@ import com.dagger.dynamic.nativevideo.viewmodel.NativeVideoViewModel
 import com.dagger.dynamic.nativevideo.viewmodel.ViewModelFactory
 import javax.inject.Inject
 
-class NativeVideoActivity : AppCompatActivity() {
+class DynamicFeatureActivity : AppCompatActivity() {
 
     @Inject
     lateinit var picassoLoader: PicassoLoader

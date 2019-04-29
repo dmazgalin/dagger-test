@@ -10,14 +10,14 @@ import dagger.Provides;
 import retrofit2.Retrofit;
 
 @Module
-public class NativeVideoModule {
+public class DynamicFeatureModule {
     @Provides
     ViewModelFactory providesViewModelFactory(NativeVideoCache cache, SchedulerConfiguration schedulerConfiguration) {
         return new ViewModelFactory(cache, schedulerConfiguration);
     }
 
     @Provides
-    NativeVideoCache providesNativeVideoCache(NativeVideoAPI api, SchedulerConfiguration schedulerConfiguration) {
+    NativeVideoCache providesNativeVideoCache(NativeVideoAPI api, SchedulerConfiguration schedulerConfiguration) {//
         return new NativeVideoCache(api, schedulerConfiguration);
     }
 
