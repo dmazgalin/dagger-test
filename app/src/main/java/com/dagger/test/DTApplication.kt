@@ -2,11 +2,11 @@ package com.dagger.test
 
 import android.app.Application
 import android.content.Context
-import com.dagger.core.dagger.CoreComponent
-import com.dagger.core.dagger.DaggerCoreComponent
 import com.dagger.corecontext.dagger.ContextModule
 import com.dagger.test.dagger.AppComponent
 import com.dagger.test.dagger.DaggerAppComponent
+import daggertest.onefootball.coredi.dagger.CoreComponent
+import daggertest.onefootball.coredi.dagger.DaggerCoreComponent
 
 
 class DTApplication : Application() {

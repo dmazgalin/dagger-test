@@ -1,4 +1,4 @@
-package com.dagger.core.dagger;
+package daggertest.onefootball.coredi.dagger;
 
 import com.dagger.core.picasso.PicassoLoader;
 import com.dagger.corecontext.dagger.ContextModule;

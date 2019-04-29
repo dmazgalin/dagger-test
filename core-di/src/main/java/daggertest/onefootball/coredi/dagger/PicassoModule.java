@@ -1,4 +1,4 @@
-package com.dagger.core.dagger;
+package daggertest.onefootball.coredi.dagger;
 
 import android.content.Context;
 import com.squareup.picasso.Cache;

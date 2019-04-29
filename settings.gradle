@@ -1,1 +1,1 @@
-include ':app', ':dynamic_feature', ':core', ':core_http', ':core_context', ':core_rx'
+include ':app', ':dynamic', ':core', ':core-http', ':core-context', ':core-rx', ':core-di'
